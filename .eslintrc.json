@@ -1,3 +1,31 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": ["eslint-plugin-import-helpers"],
+  "rules": {
+    "prettier/prettier": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "no-unused-vars": "warn",
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always",
+        "groups": [
+          ["/^react/", "/^next/", "/@next/", "module"],
+          "/components/",
+          "/@components/",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
 }
