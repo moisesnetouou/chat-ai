@@ -22,7 +22,7 @@ export function Chat() {
       <CardHeader>
         <CardTitle>Chat AI</CardTitle>
         <CardDescription>
-          Using Vercel SDK to create a chat bot.
+          Usando Vercel SDK para criar um chatbot.
         </CardDescription>
       </CardHeader>
 
@@ -63,7 +63,7 @@ export function Chat() {
       <CardFooter>
         <form className="flex w-full gap-2" onSubmit={handleSubmit}>
           <Input
-            placeholder="How can I help you?"
+            placeholder="Como posso ajudar você?"
             value={input}
             onChange={handleInputChange}
           />

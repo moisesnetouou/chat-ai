@@ -11,9 +11,18 @@ export async function POST(request: NextRequest) {
     messages: Message[]
   } = await request.json()
 
+  const systemMessage: Message = {
+    id: crypto.randomUUID(),
+    role: 'system',
+    content: `
+      Responda sempre em português brasileiro, a menos que o usuário peça claramente para usar outro idioma (ex: "responda em inglês").
+      Priorize o português para todas as respostas, exceto quando houver uma solicitação explícita de idioma diferente.
+    `.trim(),
+  }
+
   const result = streamText({
     model: openai('gpt-4o'),
-    messages,
+    messages: [systemMessage, ...messages],
   })
 
   return result.toDataStreamResponse()
